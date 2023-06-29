@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="favicon/3d-printer.ico" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/tarjetas.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/productos.css">
+
+    <script src="https://kit.fontawesome.com/bd57c9676d.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/productos.js" type="module"></script>
+
+    <title>Laboratorio3D</title>
+</head>
+
+<body>
+    <header>
+    <!-- El header se asigna al incluir el módulo general.js -->        
+    </header>
+
+    <div class="info_header">
+        <a href="index.html" title="Página de inicio"><i class="fa-solid fa-house fa-lg"></i></a><p>-> CRUD</p>
+    </div>
+
+    <main>
+        <div class="contenedor_busqueda"> 
+            <form class="busqueda" method="get" action="crud.html">
+                <input id="buscar" name="buscar" title="Ingrese una palabra clave" placeholder="Buscar productos"  type="text" >
+                <button type="submit"><i class="fa-solid fa-magnifying-glass fa-2x"></i></button>                
+            </form>
+        </div>
+
+        <div class="contenedor_tarjetas">
+            <!-- En esta sección se van a mostrar los productos -->
+        </div>
+
+        <!-- Template para cada producto -->
+        <template id="producto">
+            <article class="card">
+                <figure>
+                    <div class="slider-frame">
+                        <ul id="lista-imagenes">
+                        </ul>
+                    </div>
+                </figure>
+                <section class="contenido">
+                    <h3></h3>
+                    <section id="datos">
+                        <p><span id="campo" class="campo"></span><span id="valor"></span></p>
+                    </section>
+                    <p id="precio_anterior"></p>
+                    <p id="precio" class="precio"></p>
+                    <a href="">Comprar</a>
+                </section>
+            </article>
+        </template>
+
+        <div class="contenedor_mensaje">
+            <!-- En este contenedor se va a mostrar le mensaje si no se encuentran productos -->
+                <p class="mensaje"></p>
+        </div>
+    
+    </main>
+
+    <footer>
+    <!-- El footer se asigna al incluir el módulo general.js -->
+    </footer>
+    <script src="js/general.js"></script>
+</body>
+
+</html>

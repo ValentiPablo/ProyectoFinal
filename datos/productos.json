@@ -1,0 +1,28 @@
+[
+    {
+     "id": 1, 
+     "nombre": "Artorias",
+     "precio": 7000,
+     "franquicia": "Dark Souls",
+     "tamano": "20x15,10cm",
+     "material": "PLA+", 
+     "altura": "20cm",
+     "imagen1": "img/Artorias/artorias1.jpg", 
+     "imagen2": "img/Artorias/artorias2.jpg",
+     "imagen3": "img/Artorias/artorias3.jpg",
+     "imagen4": "img/Artorias/artorias4.jpg"
+    }, 
+    {
+     "id": 2,
+     "nombre": "Androide 18",
+     "precio": 6900,
+     "franquicia": "Dragon Ball Z",
+     "tamaño": "20x10x10cm",
+     "material": "PLA+ y ResinaUV",
+     "altura": "20cm",
+     "imagen1": "img/Android18/android1.jpeg", 
+     "imagen2": "img/Android18/android2.jpeg",
+     "imagen3": "img/Android18/android3.jpeg",
+     "imagen4": "img/Android18/android4.jpeg"
+    }
+]
