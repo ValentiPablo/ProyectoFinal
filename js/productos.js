@@ -3,7 +3,7 @@
 /* DESCRIPCION: Módulo para la página productos.html               */
 /* *************************************************************** */
 import * as moduloProducto from "./producto.js";
-import * as moduloParametros from "./parametros.js"
+import * as moduloParametros from "./parametros.js";
 
 // Código a ejecutar al importar el módulo
 // Cuando termine de cargarse el DOM, se ejecuta la función

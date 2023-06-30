@@ -143,6 +143,7 @@ header {
     font-size: 0.9em;
     text-decoration: none;
     color:#b63212;
+    margin: 0px;
 }
 
 .info_header i {

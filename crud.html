@@ -14,11 +14,10 @@
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/tarjetas.css">
     <link rel="stylesheet" href="css/slider.css">
-    <link rel="stylesheet" href="css/productos.css">
+    <link rel="stylesheet" href="css/productosCRUD.css">
 
     <script src="https://kit.fontawesome.com/bd57c9676d.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/productos.js" type="module"></script>
 
     <title>Laboratorio3D</title>
 </head>
@@ -33,41 +32,48 @@
     </div>
 
     <main>
-        <div class="contenedor_busqueda"> 
-            <form class="busqueda" method="get" action="crud.html">
-                <input id="buscar" name="buscar" title="Ingrese una palabra clave" placeholder="Buscar productos"  type="text" >
-                <button type="submit"><i class="fa-solid fa-magnifying-glass fa-2x"></i></button>                
-            </form>
-        </div>
+        <div id="app" class="container">
+            <div class="contenedor_acciones"> 
+                <a href="">Nuevo Producto</a>
+            </div>
 
-        <div class="contenedor_tarjetas">
-            <!-- En esta sección se van a mostrar los productos -->
-        </div>
-
-        <!-- Template para cada producto -->
-        <template id="producto">
-            <article class="card">
-                <figure>
-                    <div class="slider-frame">
-                        <ul id="lista-imagenes">
-                        </ul>
-                    </div>
-                </figure>
-                <section class="contenido">
-                    <h3></h3>
-                    <section id="datos">
-                        <p><span id="campo" class="campo"></span><span id="valor"></span></p>
-                    </section>
-                    <p id="precio_anterior"></p>
-                    <p id="precio" class="precio"></p>
-                    <a href="">Comprar</a>
+            <div v-if="error">
+                <p>Lo sentimos , ........</p>
+            </div>
+            <div v-else>
+                <section v-if="cargando">
+                    <div class="spinner-border"></div>
+                    <p>Buscando productos .....</p>
                 </section>
-            </article>
-        </template>
-
-        <div class="contenedor_mensaje">
-            <!-- En este contenedor se va a mostrar le mensaje si no se encuentran productos -->
-                <p class="mensaje"></p>
+                <section v-else>
+                    <div class="contenedor_tarjetas">
+                        <article v-for="producto in productos" class="card">
+                            <figure>
+                                <div class="slider-frame">
+                                    <ul id="lista-imagenes">
+                                        <li><img :src="producto.imagen1" :alt="producto.nombre"></li>
+                                        <li><img :src="producto.imagen1" :alt="producto.nombre"></li>
+                                        <li><img :src="producto.imagen1" :alt="producto.nombre"></li>
+                                        <li><img :src="producto.imagen1" :alt="producto.nombre"></li>
+                                    </ul>
+                                </div>
+                            </figure>
+                            <section class="contenido">
+                                <h3>{{producto.nombre}}</h3>
+                                <section id="datos">
+                                    <p><span id="franquicia" class="campo">Franquicia: </span><span>{{producto.franquicia}}</span></p>
+                                    <p><span id="tamano" class="campo">Tamaño: </span><span id="valor">{{producto.tamano}}</span></p>
+                                    <p><span id="material" class="campo">Material: </span><span id="valor">{{producto.material}}</span></p>
+                                    <p><span id="altura" class="campo">Altura: </span><span id="valor">{{producto.altura}}</span></p>
+                                </section>
+                                <p id="precio" class="precio">$ {{producto.precio}}</p>
+                                <a href="">Editar</a>
+                                <a href="">Borrar</a>
+                            </section>
+                        </article>            
+                    </div>
+                </section>
+            </div>
         </div>
     
     </main>
@@ -75,6 +81,20 @@
     <footer>
     <!-- El footer se asigna al incluir el módulo general.js -->
     </footer>
+    <script>
+        <!--Link de Bootstrap-->
+        src = "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity = "sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin = "anonymous"
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+        crossorigin="anonymous">
+    </script>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="js/productosCRUD.js"></script>
     <script src="js/general.js"></script>
 </body>
 
