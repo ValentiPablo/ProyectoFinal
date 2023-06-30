@@ -5,7 +5,7 @@ createApp({
     data() {
         return {
             productos: [],
-            url: 'http://grupo18.pythonanywhere.com/productos', // si ya lo subieron a pythonanywhere
+            url: 'https://grupo18.pythonanywhere.com/productos', // si ya lo subieron a pythonanywhere
             error: false,
             cargando: true,
             /*atributos para  guardar los valores del formulario */
