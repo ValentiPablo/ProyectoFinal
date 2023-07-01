@@ -70,8 +70,9 @@
                                     <p><span id="altura" class="campo">Altura: </span><span id="valor">{{producto.altura}}</span></p>
                                 </section>
                                 <p id="precio" class="precio">$ {{producto.precio}}</p>
-                                <a href="">Editar</a>
-                                <a href="">Borrar</a>
+                                <a :href="'producto_modificar.html?id=' + producto.id">Editar</a>
+                                <a href="" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?')">Borrar</a>
+
                             </section>
                         </article>            
                     </div>
