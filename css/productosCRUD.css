@@ -40,6 +40,7 @@
     background: rgb(203, 203, 203);
     color:#5e0202;
 }
+
 .busqueda {
     display: flex;
     flex-direction: row;
@@ -108,13 +109,3 @@
     color: #770505;
 }
 
-label ~ input {
-    margin: 0 5px;
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-    

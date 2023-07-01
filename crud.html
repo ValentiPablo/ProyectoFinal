@@ -71,8 +71,7 @@
                                 </section>
                                 <p id="precio" class="precio">$ {{producto.precio}}</p>
                                 <a :href="'producto_modificar.html?id=' + producto.id">Editar</a>
-                                <a href="" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?')">Borrar</a>
-
+                                <button type="button" v-on:click="eliminar(producto.id)">Borrar</button>
                             </section>
                         </article>            
                     </div>

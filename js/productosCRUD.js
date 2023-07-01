@@ -1,7 +1,5 @@
-
 const { createApp } = Vue
 createApp({
-
     data() {
         return {
             productos: [],
@@ -36,15 +34,18 @@ createApp({
                 })
         },
         eliminar(producto) {
-            const url = this.url + '/' + producto;
-            var options = {
-                method: 'DELETE',
+            if (confirm('¿Estás seguro de que deseas eliminar este producto?'))
+            {
+                const url = this.url + '/' + producto;
+                var options = {
+                    method: 'DELETE',
+                }
+                fetch(url, options)
+                    .then(res => res.text()) // or res.json()
+                    .then(res => {
+                        location.reload();
+                    })    
             }
-            fetch(url, options)
-                .then(res => res.text()) // or res.json()
-                .then(res => {
-                    location.reload();
-                })
         },
         grabar() {
             let producto = {
@@ -59,7 +60,6 @@ createApp({
                 imagen3: this.imagen3,
                 imagen4: this.imagen4
             }
-            alert(JSON.stringify(producto))
             var options = {
                 body: JSON.stringify(producto),
                 method: 'POST',
@@ -69,12 +69,12 @@ createApp({
             
             fetch(this.url, options)
                 .then(function () {
-                    alert("Registro grabado")
+                    alert("Producto creado")
                     window.location.href = "crud.html";
                 })
                 .catch(err => {
                     console.error(err);
-                    alert("Error al Grabarr")
+                    alert("Error al grabar el producto")
                 })
          }
     },

@@ -87,7 +87,7 @@
     text-align: center;
 }
 
-.card .contenido a{
+.card .contenido a, button {
     text-decoration: none;
     display: inline-block;
     padding: 10px;
@@ -99,7 +99,7 @@
     transition: all 400ms ease;
 }
 
-.card .contenido a:hover{
+.card .contenido a:hover, button:hover{
     background: rgb(203, 203, 203);
     color:#5e0202;
 }
