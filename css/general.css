@@ -242,6 +242,10 @@ h3 {
 }
 
 .contenedor_mensaje {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
     color: #edeaea;
     background: rgba(0, 0, 0, 0.808);
     padding: 20px;
@@ -257,6 +261,7 @@ h3 {
 }
 
 .mensaje {
+    margin:0px;
     padding: 5px 10px;
     text-align: center;
     color: #cb4220;

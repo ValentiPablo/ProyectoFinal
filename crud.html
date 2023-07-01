@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="css/productosCRUD.css">
 
     <script src="https://kit.fontawesome.com/bd57c9676d.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <title>Laboratorio3D</title>
 </head>
@@ -38,12 +37,16 @@
             </div>
 
             <div v-if="error">
-                <p>Lo sentimos , ........</p>
+                <div class="contenedor_mensaje">
+                    <p class="mensaje">No de pudieron obtener los productos</p>
+                </div>
             </div>
             <div v-else>
                 <section v-if="cargando">
-                    <div class="spinner-border"></div>
-                    <p>Buscando productos .....</p>
+                    <div class="contenedor_mensaje">
+                        <div class="spinner-border" style="color:brown"></div>
+                        <p class="mensaje">Buscando productos .....</p>
+                    </div>
                 </section>
                 <section v-else>
                     <div class="contenedor_tarjetas">
@@ -51,10 +54,10 @@
                             <figure>
                                 <div class="slider-frame">
                                     <ul id="lista-imagenes">
-                                        <li><img :src="producto.imagen1" :alt="producto.nombre"></li>
-                                        <li><img :src="producto.imagen1" :alt="producto.nombre"></li>
-                                        <li><img :src="producto.imagen1" :alt="producto.nombre"></li>
-                                        <li><img :src="producto.imagen1" :alt="producto.nombre"></li>
+                                        <li><img :src="producto.imagen1" :alt="producto.nombre" onerror="this.src='img/imagen_no_disponible.png';"></li>
+                                        <li><img :src="producto.imagen2" :alt="producto.nombre" onerror="this.src='img/imagen_no_disponible.png';"></li>
+                                        <li><img :src="producto.imagen3" :alt="producto.nombre" onerror="this.src='img/imagen_no_disponible.png';"></li>
+                                        <li><img :src="producto.imagen4" :alt="producto.nombre" onerror="this.src='img/imagen_no_disponible.png';"></li>
                                     </ul>
                                 </div>
                             </figure>
@@ -75,12 +78,14 @@
                 </section>
             </div>
         </div>
-    
+        
     </main>
 
     <footer>
     <!-- El footer se asigna al incluir el módulo general.js -->
     </footer>
+<<<<<<< HEAD
+=======
     <script>
         // <!--Link de Bootstrap-->
         src = "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
@@ -92,10 +97,12 @@
         integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
         crossorigin="anonymous">
     </script>
+>>>>>>> f282ea69ab4a3050f0c76f91063d5367fb7e62bb
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="js/productosCRUD.js"></script>
     <script src="js/general.js"></script>
+
 </body>
 
 </html>

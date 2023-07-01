@@ -1,105 +1,85 @@
 <!DOCTYPE html>
-
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <link rel="shortcut icon" href="favicon/3d-printer.ico" type="image/x-icon">
-        <!-- Bootstrap CSS v5.2.1 -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/tarjetas.css">
-        <link rel="stylesheet" href="css/slider.css">
-        <link rel="stylesheet" href="css/productosCRUD.css">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <script src="https://kit.fontawesome.com/bd57c9676d.js" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="shortcut icon" href="favicon/3d-printer.ico" type="image/x-icon">
 
-        <title>Añadir producto - Laboratorio3D</title>
-    </head>
-    
-    <body>
-        <header id="header">
-            <!-- El header se asigna al incluir el módulo general.js -->
-        </header>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
-        <div class="info_header">
-            <a href="index.html" title="Página de inicio"><i class="fa-solid fa-house fa-lg"></i></a><p>-> CRUD</p>
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/tarjetas.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/producto_nuevo.css">
+
+    <script src="https://kit.fontawesome.com/bd57c9676d.js" crossorigin="anonymous"></script>
+
+    <title>Laboratorio3D</title>
+</head>
+
+<body>
+    <header>
+    <!-- El header se asigna al incluir el módulo general.js -->        
+    </header>
+
+    <div class="info_header">
+        <a href="index.html" title="Página de inicio"><i class="fa-solid fa-house fa-lg"></i></a><p>-> CRUD Nuevo Producto</p>
+    </div>
+
+    <main>
+        <div id="app" class="contenedor_nuevo_producto">
+
+            <form class="nuevo_producto">
+                <fieldset class="contenedor_nuevo_producto_campos">
+                    <h3>Alta de nuevo producto</h2>
+                    <label for="nombre">Nombre</label>
+                    <input id="nombre" name="name"  title="Ingrese el nombre del producto" placeholder="Ingrese el nombre del producto" type="text" minlength="1" maxlength="50" v-model="nombre">
+                    <label for="precio">Precio</label>
+                    <input id="precio" name="precio" title="Ingrese el precio" placeholder="Ingrese el precio" type="number" maxlength="50" v-model="precio">
+                    <label for="franquicia">Franquicia</label>
+                    <input id="franquicia" name="franquicia" title="Ingrese la franquicia" placeholder="Ingrese la franquicia" type="text" maxlength="50" v-model="franquicia">
+                    <label for="tamano">Tamaño</label>
+                    <input id="tamano" name="tamano" title="Ingrese el tamaño (Ej: 20x20x20cm)" placeholder="Ingrese el tamaño (Ej: 20x20x20cm)" type="text" maxlength="50" v-model="tamano">
+                    <label for="material">Material</label>
+                    <select name="material" id="material" v-model="material" title="Seleccione el material" placeholder="Seleccione el material">
+                        <option value="PLA+">PLA+</option>
+                        <option value="PLA+ y Leds">PLA+ y Leds</option>
+                        <option value="ResinaUV">ResinaUV</option>
+                        <option value="PLA+ y Resina">PLA+ y Resina</option>
+                        <option value="PLA+ y ResinaUV">PLA+ y ResinaUV</option>
+                        <option value="PLA+, Resina y Leds">PLA+, Resina y Leds</option>
+                    </select>
+                    <label for="altura">Altura</label>
+                    <input id="altura" name="altura" title="Ingrese la altura (Ej: 20cm)" placeholder="Ingrese la altura (Ej: 20cm)" type="text" maxlength="50" v-model="altura">
+                    <label for="imagen1">Imagen 1</label>
+                    <input id="imagen1" name="imagen1" title="Ingrese la imagen del servidor (EJ: img/producto1/imagen1.jpeg)" placeholder="Ingrese la imagen del servidor (EJ: img/producto1/imagen1.jpeg)" type="text" maxlength="50" v-model="imagen1">
+                    <label for="imagen2">Imagen 2</label>
+                    <input id="imagen2" name="imagen2" title="Ingrese la imagen del servidor (EJ: img/producto1/imagen2.jpeg)" placeholder="Ingrese la imagen del servidor (EJ: img/producto1/imagen2.jpeg)" type="text" maxlength="50" v-model="imagen2">
+                    <label for="imagen3">Imagen 3</label>
+                    <input id="imagen3" name="imagen3" title="Ingrese la imagen del servidor (EJ: img/producto1/imagen3.jpeg)" placeholder="Ingrese la imagen del servidor (EJ: img/producto1/imagen3.jpeg)" type="text" maxlength="50" v-model="imagen3">
+                    <label for="imagen4">Imagen 4</label>
+                    <input id="imagen4" name="imagen4" title="Ingrese la imagen del servidor (EJ: img/producto1/imagen4.jpeg)" placeholder="Ingrese la imagen del servidor (EJ: img/producto1/imagen4.jpeg)" type="text" maxlength="50" v-model="imagen4">
+                    
+                    <div>
+                        <button type="button" v-on:click="grabar()">GUARDAR</button>
+                    </div>
+                </fieldset>
+            </form>
         </div>
     
-        <main>
-            <div id="app" class="container">
-                <form class="contenedor_formulario">
-                    <h1>Nuevo Producto</h1>
-                    <div class="mb-3">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre" id="nombre" v-model="nombre">
-                    </div>
-                    <div class="mb-3">
-                        <label for="precio">Precio</label>
-                        <input type="number" name="precio" id="precio" v-model="precio">
-                    </div>
-                    <div class="mb-3">
-                        <label for="franquicia">Franquicia</label>
-                        <input type="text" name="franquicia" id="franquicia" v-model="franquicia">
-                    </div>
-                    <div class="mb-3">
-                        <label for="tamano">Tamaño</label>
-                        <input type="text" name="tamano" id="tamano" v-model="tamano">
-                    </div>
-                    <div class="mb-3">
-                        <label for="material">Material</label>
-                        <input type="text" name="material" id="material" v-model="material">
-                    </div>
-                    <div class="mb-3">
-                        <label for="altura">Altura</label>
-                        <input type="text" name="altura" id="altura" v-model="altura">
-                    </div>
-                    <div class="mb-3">
-                        <label for="imagen1">Imagen 1</label>
-                        <input type="text" name="imagen1" id="imagen1" v-model="imagen1">
-                        <img :src="imagen1" alt="">
-                    </div>
-                    <div class="mb-3">
-                        <label for="imagen2">Imagen 2</label>
-                        <input type="text" name="imagen2" id="imagen2" v-model="imagen2">
-                        <img :src="imagen2" alt="">
-                    </div>
-                    <div class="mb-3">
-                        <label for="imagen3">Imagen 3</label>
-                        <input type="text" name="imagen3" id="imagen3" v-model="imagen3">
-                        <img :src="imagen3" alt="">
-                    </div>
-                    <div class="mb-3">
-                        <label for="imagen4">Imagen 4</label>
-                        <input type="text" name="imagen4" id="imagen4" v-model="imagen4">
-                        <img :src="imagen4" alt="">
-                    </div>
-       
-                    <button type="button" class="btn btn-success" v-on:click="grabar()">Añadir</button>
-                </form>
-            </div>
-        </main>
-        
-        <footer>
-            <!-- El footer se asigna al incluir el módulo general.js -->
-        </footer>
-        <script>
-            // <!-- Link de Bootstrap -->
-            src = "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-            integrity = "sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-            crossorigin = "anonymous"
-        </script>
+    </main>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
-        crossorigin="anonymous">
-        </script>
-        
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <script src="js/productosCRUD.js"></script>
-        <script src="js/general.js"></script>
-    </body>
+    <footer>
+    <!-- El footer se asigna al incluir el módulo general.js -->
+    </footer>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="js/productosCRUD.js"></script>
+    <script src="js/general.js"></script>
+</body>
+
 </html>

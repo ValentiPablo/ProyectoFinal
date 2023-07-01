@@ -1,0 +1,70 @@
+/* 
+===================================================
+=    ESTILO PARA LA PÁGINA producto_nuevo.html    =
+===================================================
+*/
+.contenedor_nuevo_producto {
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.nuevo_producto {
+    width: 50%;
+    margin: 0 3% 0 7%;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(10, 0, 0, 0.808);
+    transition: all 400ms ease;
+    box-shadow: 0px 1px 100px rgba(50, 0, 30, 1);
+    color: #edeaea;
+    text-align: justify;
+}
+
+.nuevo_producto .campo_error {
+    color: white;
+    background-color: #b63212;
+}
+
+ .nuevo_producto:hover {
+    box-shadow: 5px 5px 10px rgba(61, 182, 234, 0.795); ;   
+    transform: translatey(-1%);
+}
+
+.contenedor_nuevo_producto_campos {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.nuevo_producto label {
+    display: block;
+    padding: 2px;
+    margin: 5px;
+}
+
+.nuevo_producto input[type="text"], input[type="email"], input[type="number"], textarea, select, option {
+    padding: 5px;
+    margin: 10px;
+    width: 90%;
+}
+
+.nuevo_producto input[type="submit"], input[type="reset"], button {
+    padding: 5px;
+    margin: 30px 16px 10px 16px;
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #5e0202;
+    color: rgb(203, 203, 203);
+    border: 1px solid ;
+    border-radius: 4px;
+    transition: all 400ms ease;
+}
+
+.nuevo_producto input[type="submit"]:hover, input[type="reset"]:hover, button:hover{
+    background: rgb(203, 203, 203);
+    color:#5e0202;
+}
