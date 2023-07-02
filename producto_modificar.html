@@ -31,45 +31,55 @@
     </div>
 
     <main>
-        <div id="app" class="contenedor_nuevo_producto">
+        <div id="app" class="container">
 
-            <form class="nuevo_producto" method="PUT" :action="'/productos/' + id">
-                <fieldset class="contenedor_nuevo_producto_campos">
-                    <h3>Modificar producto</h3>
-                    <label for="nombre">Nombre</label>
-                    <input id="nombre" v-model="nombre" title="Ingrese el nombre del producto" placeholder="Ingrese el nombre del producto" type="text" minlength="1" maxlength="50">
-                    <label for="precio">Precio</label>
-                    <input id="precio" v-model="precio" title="Ingrese el precio" placeholder="Ingrese el precio" type="number" maxlength="50">
-                    <label for="franquicia">Franquicia</label>
-                    <input id="franquicia" v-model="franquicia" title="Ingrese la franquicia" placeholder="Ingrese la franquicia" type="text" maxlength="50">
-                    <label for="tamano">Tamaño</label>
-                    <input id="tamano" v-model="tamano" title="Ingrese el tamaño (Ej: 20x20x20cm)" placeholder="Ingrese el tamaño (Ej: 20x20x20cm)" type="text" maxlength="50">
-                    <label for="material">Material</label>
-                    <select id="material" v-model="material" title="Seleccione el material" placeholder="Seleccione el material">
-                        <option value="PLA+">PLA+</option>
-                        <option value="PLA+ y Leds">PLA+ y Leds</option>
-                        <option value="ResinaUV">ResinaUV</option>
-                        <option value="PLA+ y Resina">PLA+ y Resina</option>
-                        <option value="PLA+ y ResinaUV">PLA+ y ResinaUV</option>
-                        <option value="PLA+, Resina y Leds">PLA+, Resina y Leds</option>
-                    </select>
-                    <label for="altura">Altura</label>
-                    <input id="altura" v-model="altura" title="Ingrese la altura (Ej: 20cm)" placeholder="Ingrese la altura (Ej: 20cm)" type="text" maxlength="50">
-                    <label for="imagen1">Imagen 1</label>
-                    <input id="imagen1" v-model="imagen1" title="Ingrese la imagen del servidor (EJ: img/producto1/imagen1.jpeg)" placeholder="Ingrese la imagen del servidor (EJ: img/producto1/imagen1.jpeg)" type="text" maxlength="50">
-                    <label for="imagen2">Imagen 2</label>
-                    <input id="imagen2" v-model="imagen2" title="Ingrese la imagen del servidor (EJ: img/producto1/imagen2.jpeg)" placeholder="Ingrese la imagen del servidor (EJ: img/producto1/imagen2.jpeg)" type="text" maxlength="50">
-                    <label for="imagen3">Imagen 3</label>
-                    <input id="imagen3" v-model="imagen3" title="Ingrese la imagen del servidor (EJ: img/producto1/imagen3.jpeg)" placeholder="Ingrese la imagen del servidor (EJ: img/producto1/imagen3.jpeg)" type="text" maxlength="50">
-                    <label for="imagen4">Imagen 4</label>
-                    <input id="imagen4" v-model="imagen4" title="Ingrese la imagen del servidor (EJ: img/producto1/imagen4.jpeg)" placeholder="Ingrese la imagen del servidor (EJ: img/producto1/imagen4.jpeg)" type="text" maxlength="50">
-                    
-                    <div>
-                        <button type="button" v-on:click="modificar()">GUARDAR</button>
-                        <button type="button" onclick="window.location.href = 'crud.html'">CANCELAR</button>
-                    </div>
-                </fieldset>
-            </form>
+            <div v-if="error" class="contenedor_mensaje">
+                <p class="mensaje">Error al modificar el producto</p>
+                <button type="button" onclick="window.location.href = 'crud.html'">CONTINUAR</button>
+            </div>
+            <div v-else class="contenedor_nuevo_producto">
+                <div v-if="ok" class="contenedor_mensaje">
+                    <p class="mensaje">El producto se actualizó correctamente</p>
+                    <button type="button" onclick="window.location.href = 'crud.html'">CONTINUAR</button>
+                </div>
+                <form v-else class="nuevo_producto" method="PUT" :action="'/productos/' + id">
+                    <fieldset class="contenedor_nuevo_producto_campos">
+                        <h3>Modificar producto</h3>
+                        <label for="nombre">Nombre</label>
+                        <input id="nombre" v-bind:class="{campo_error: errorNombre}" v-model="nombre" title="Ingrese el nombre del producto" placeholder="Ingrese el nombre del producto" type="text" minlength="1" maxlength="50">
+                        <label for="precio">Precio</label>
+                        <input id="precio" v-bind:class="{campo_error: errorPrecio}" v-model="precio" title="Ingrese el precio" placeholder="Ingrese el precio" type="number" min="0" max="100000" step="100">
+                        <label for="franquicia">Franquicia</label>
+                        <input id="franquicia" v-bind:class="{campo_error: errorFranquicia}" v-model="franquicia" title="Ingrese la franquicia" placeholder="Ingrese la franquicia" type="text" maxlength="50">
+                        <label for="tamano">Tamaño</label>
+                        <input id="tamano" v-bind:class="{campo_error: errorTamano}" v-model="tamano" title="Ingrese el tamaño (Ej: 20x20x20cm)" placeholder="Ingrese el tamaño (Ej: 20x20x20cm)" type="text" maxlength="50">
+                        <label for="material">Material</label>
+                        <select id="material" v-bind:class="{campo_error: errorMaterial}" v-model="material" title="Seleccione el material" placeholder="Seleccione el material">
+                            <option value="PLA+">PLA+</option>
+                            <option value="PLA+ y Leds">PLA+ y Leds</option>
+                            <option value="ResinaUV">ResinaUV</option>
+                            <option value="PLA+ y Resina">PLA+ y Resina</option>
+                            <option value="PLA+ y ResinaUV">PLA+ y ResinaUV</option>
+                            <option value="PLA+, Resina y Leds">PLA+, Resina y Leds</option>
+                        </select>
+                        <label for="altura">Altura</label>
+                        <input id="altura" v-bind:class="{campo_error: errorAltura}" v-model="altura" title="Ingrese la altura (Ej: 20cm)" placeholder="Ingrese la altura (Ej: 20cm)" type="text" maxlength="50">
+                        <label for="imagen1">Imagen 1</label>
+                        <input id="imagen1" v-bind:class="{campo_error: errorImagen1}" v-model="imagen1" title="Ingrese la imagen del servidor (EJ: img/producto1/imagen1.jpeg)" placeholder="Ingrese la imagen del servidor (EJ: img/producto1/imagen1.jpeg)" type="text" maxlength="50">
+                        <label for="imagen2">Imagen 2</label>
+                        <input id="imagen2" v-bind:class="{campo_error: errorImagen2}" v-model="imagen2" title="Ingrese la imagen del servidor (EJ: img/producto1/imagen2.jpeg)" placeholder="Ingrese la imagen del servidor (EJ: img/producto1/imagen2.jpeg)" type="text" maxlength="50">
+                        <label for="imagen3">Imagen 3</label>
+                        <input id="imagen3" v-bind:class="{campo_error: errorImagen3}" v-model="imagen3" title="Ingrese la imagen del servidor (EJ: img/producto1/imagen3.jpeg)" placeholder="Ingrese la imagen del servidor (EJ: img/producto1/imagen3.jpeg)" type="text" maxlength="50">
+                        <label for="imagen4">Imagen 4</label>
+                        <input id="imagen4" v-bind:class="{campo_error: errorImagen4}" v-model="imagen4" title="Ingrese la imagen del servidor (EJ: img/producto1/imagen4.jpeg)" placeholder="Ingrese la imagen del servidor (EJ: img/producto1/imagen4.jpeg)" type="text" maxlength="50">
+                        
+                        <div>
+                            <button type="button" v-on:click="modificar()">GUARDAR</button>
+                            <button type="button" onclick="window.location.href = 'crud.html'">CANCELAR</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
         </div>
     
     </main>
