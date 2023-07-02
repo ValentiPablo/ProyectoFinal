@@ -40,7 +40,7 @@ createApp({
             imagen3: "",
             imagen4: "",
             // URL del producto a modificar
-            url: 'http://grupo18.pythonanywhere.com/productos/' + id,
+            url: 'https://grupo18.pythonanywhere.com/productos/' + id,
             // Error en los campos
             errorNombre: false,
             errorPrecio: false,

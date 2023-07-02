@@ -305,7 +305,7 @@ export async function fetchProductos() {
 
     let datos = null;
     try {
-        const respuesta = await fetch('http://grupo18.pythonanywhere.com/productos');
+        const respuesta = await fetch('https://grupo18.pythonanywhere.com/productos');
         datos = await respuesta.json();
 
     } catch (error) {
