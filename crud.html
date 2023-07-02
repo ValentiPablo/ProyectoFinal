@@ -32,26 +32,25 @@
 
     <main>
         <div id="app" class="container">
-            <div class="contenedor_acciones"> 
-                <a href="producto_nuevo.html">Nuevo Producto</a>
-            </div>
-
-            <div v-if="error">
-                <div class="contenedor_mensaje">
-                    <p class="mensaje">No de pudieron obtener los productos</p>
-                </div>
+            <div v-if="ok">
+                <p class="mensaje">El producto se eliminó correctamente</p>
+                <button type="button" onclick="window.location.href = 'crud.html'">CONTINUAR</button>    
             </div>
             <div v-else>
-                <section v-if="cargando">
+                <div class="contenedor_acciones"> 
+                    <a href="producto_nuevo.html">Nuevo Producto</a>
+                </div>
+                <div v-if="error">
                     <div class="contenedor_mensaje">
-                        <div class="spinner-border" style="color:brown"></div>
-                        <p class="mensaje">Buscando productos .....</p>
+                        <p class="mensaje">No de pudieron obtener los productos</p>
                     </div>
-                </section>
-                <section v-else>
-                    <section v-if="ok">
-                        <p class="mensaje">El producto se eliminó correctamente</p>
-                        <button type="button" onclick="window.location.href = 'crud.html'">CONTINUAR</button>    
+                </div>
+                <div v-else>
+                    <section v-if="cargando">
+                        <div class="contenedor_mensaje">
+                            <div class="spinner-border" style="color:brown"></div>
+                            <p class="mensaje">Buscando productos .....</p>
+                        </div>
                     </section>
                     <div v-else class="contenedor_tarjetas">
                         <article v-for="producto in productos" class="card">
@@ -79,7 +78,8 @@
                             </section>
                         </article>            
                     </div>
-                </section>
+                    </section>
+                    </div>
             </div>
         </div>
         
