@@ -32,7 +32,6 @@
 
     <main>
         <div id="app" class="container">
-
             <div v-if="error" class="contenedor_mensaje">
                 <p class="mensaje">Error al crear el producto</p>
                 <button type="button" onclick="window.location.href = 'crud.html'">CONTINUAR</button>
@@ -44,7 +43,7 @@
                 </div>
                 <form v-else class="nuevo_producto">
                     <fieldset class="contenedor_nuevo_producto_campos">
-                        <h3>Alta de nuevo producto</h2>
+                        <h3>Alta de nuevo producto</h3>
                         <label for="nombre">Nombre</label>
                         <input id="nombre" v-bind:class="{campo_error: errorNombre}" v-model="nombre" title="Ingrese el nombre del producto" placeholder="Ingrese el nombre del producto" type="text" minlength="1" maxlength="50">
                         <label for="precio">Precio</label>
